@@ -38,8 +38,3 @@ public class ContaCorrente extends Conta implements ITributavel {
         return super.toString() + " | Tipo: Conta Corrente";
     }
 }
-    @Override
-    public String toString() {
-        return super.toString() + " | Tipo: Conta Corrente";
-    }
-}
