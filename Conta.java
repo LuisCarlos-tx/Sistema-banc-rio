@@ -9,6 +9,7 @@ public abstract class Conta {
         this.cliente = cliente;
         this.saldo = 0.0;
     }
+
     public int getNumero() { return numero; }
     public String getCliente() { return cliente; }
     public double getSaldo() { return saldo; }
@@ -16,6 +17,9 @@ public abstract class Conta {
     public void depositar(double valor) {
         if (valor > 0) {
             saldo += valor;
+            System.out.println("Depósito de R$ " + valor + " realizado com sucesso!");
+        } else {
+            System.out.println("Valor de depósito inválido!");
         }
     }
 
