@@ -17,7 +17,7 @@ public class Main {
             exibirMenu();
             try {
                 opcao = scanner.nextInt();
-                scanner.nextLine();
+                scanner.nextLine(); // Limpar buffer
                 
                 switch (opcao) {
                     case 1 -> criarConta();
@@ -31,7 +31,7 @@ public class Main {
                 }
             } catch (Exception e) {
                 System.out.println("Erro: Digite um número válido!");
-                scanner.nextLine(); 
+                scanner.nextLine(); // Limpar buffer em caso de erro
                 opcao = 0;
             }
         } while (opcao != 7);
@@ -101,11 +101,6 @@ public class Main {
         System.out.println("==================================================");
     }
 
-    public static void main(String[] args) {
-        Main sistema = new Main();
-        sistema.executar();
-    }
-}
     public static void main(String[] args) {
         Main sistema = new Main();
         sistema.executar();
