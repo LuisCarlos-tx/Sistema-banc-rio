@@ -5,10 +5,12 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public boolean sacar(double valor) {
-        if (saldo >= valor) {
+        if (valor > 0 && saldo >= valor) {
             saldo -= valor;
+            System.out.println("Saque de R$ " + valor + " realizado com sucesso!");
             return true;
         }
+        System.out.println("Saldo insuficiente para saque!");
         return false;
     }
 
@@ -16,6 +18,7 @@ public class ContaPoupanca extends Conta {
     public boolean transferir(double valor, Conta contaDestino) {
         if (sacar(valor)) {
             contaDestino.depositar(valor);
+            System.out.println("Transferência de R$ " + valor + " para conta " + contaDestino.getNumero() + " realizada!");
             return true;
         }
         return false;
