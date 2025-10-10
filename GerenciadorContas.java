@@ -10,10 +10,13 @@ public class GerenciadorContas {
 
     public void criarConta(String cliente, String tipoConta) {
         Conta novaConta;
-        if (tipoConta.equalsIgnoreCase("C")) {
+        if (tipoConta.equalsIgnoreCase("C") || tipoConta.equalsIgnoreCase("CORRENTE")) {
             novaConta = new ContaCorrente(cliente);
-        } else {
+        } else if (tipoConta.equalsIgnoreCase("P") || tipoConta.equalsIgnoreCase("POUPANCA")) {
             novaConta = new ContaPoupanca(cliente);
+        } else {
+            System.out.println("Tipo de conta inválido!");
+            return;
         }
         contas.add(novaConta);
         System.out.println("Conta criada com sucesso! Número: " + novaConta.getNumero());
@@ -34,21 +37,27 @@ public class GerenciadorContas {
             conta.depositar(valor);
             return true;
         }
+        System.out.println("Conta não encontrada ou valor inválido!");
         return false;
     }
 
     public boolean sacar(int numeroConta, double valor) {
         Conta conta = buscarConta(numeroConta);
-        return conta != null && conta.sacar(valor);
+        if (conta != null && valor > 0) {
+            return conta.sacar(valor);
+        }
+        System.out.println("Conta não encontrada ou valor inválido!");
+        return false;
     }
 
     public boolean transferir(int contaOrigem, int contaDestino, double valor) {
         Conta origem = buscarConta(contaOrigem);
         Conta destino = buscarConta(contaDestino);
         
-        if (origem != null && destino != null) {
+        if (origem != null && destino != null && valor > 0) {
             return origem.transferir(valor, destino);
         }
+        System.out.println("Conta de origem, destino ou valor inválido!");
         return false;
     }
 
@@ -73,9 +82,5 @@ public class GerenciadorContas {
             }
         }
         return total;
-    }
-
-    public List<Conta> getContas() {
-        return contas;
     }
 }
