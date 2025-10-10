@@ -17,17 +17,32 @@ public class Main {
             exibirMenu();
             try {
                 opcao = scanner.nextInt();
-                scanner.nextLine(); // Limpar buffer
+                scanner.nextLine();
                 
                 switch (opcao) {
-                    case 1 -> criarConta();
-                    case 2 -> realizarDeposito();
-                    case 3 -> realizarSaque();
-                    case 4 -> realizarTransferencia();
-                    case 5 -> listarContas();
-                    case 6 -> calcularTributos();
-                    case 7 -> System.out.println("Saindo do sistema... Obrigado!");
-                    default -> System.out.println("Opção inválida! Tente novamente.");
+                    case 1:
+                        criarConta();
+                        break;
+                    case 2:
+                        realizarDeposito();
+                        break;
+                    case 3:
+                        realizarSaque();
+                        break;
+                    case 4:
+                        realizarTransferencia();
+                        break;
+                    case 5:
+                        listarContas();
+                        break;
+                    case 6:
+                        calcularTributos();
+                        break;
+                    case 7:
+                        System.out.println("Saindo do sistema... Obrigado!");
+                        break;
+                    default:
+                        System.out.println("Opção inválida! Tente novamente.");
                 }
             } catch (Exception e) {
                 System.out.println("Erro: Digite um número válido!");
